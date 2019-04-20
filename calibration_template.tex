@@ -1,0 +1,103 @@
+\documentclass[a4paper,landscape,11pt,halfparskip,smallheadings]{scrartcl}
+\usepackage[a4paper, landscape, margin=2cm]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{german}
+\usepackage[utf8x]{inputenc}
+\usepackage{scrpage2}
+\usepackage{booktabs}
+\usepackage{multicol}
+%\usepackage{eso-pic}
+%\AddToShipoutPicture{\resizebox{0.9\pdfpagewidth}{0.9\pdfpageheight}%           
+%{\rotatebox{60}{\color[gray]{0.8}\hspace*{5mm}\textsc{DRAFT}}}}
+\usepackage[pdfauthor={},pdftitle={},pdfstartview=FitH,pdfborder={0 0 0}]{hyperref}
+\setkomafont{pagehead}{\normalfont\normalcolor}
+
+%\addtolength{\textheight}{5mm}
+\title{Messprotokoll Nebenaussendungen}
+\author{$model, $prefix-$counter}
+\date{}
+\pagestyle{scrheadings}
+\lohead{}
+\rohead{}
+\cfoot{}
+\lofoot{}
+\rofoot{}
+\renewcommand*{\titlepagestyle}{scrheadings}
+\newenvironment{q}{\small}{}
+\setkomafont{pagehead}{\sf}
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+\sloppy
+\renewcommand{\familydefault}{\sfdefault}
+\begin{document}
+\maketitle
+\vspace{-5mm}
+\begin{multicols}{2}
+\begin{center}\scalebox{0.7}{\begin{tikzpicture}
+    \draw plot[smooth,mark size=1pt] file {${counter}_2m.txt};
+    \draw[xstep=1.5cm,ystep=1cm,lightgray,very thin] (0,0) grid (15,10);
+    \draw[dashed] (0,${peak_2m} ) -- (15,${peak_2m} );
+    \draw[dashed] (0,${lim_2m} ) -- (15,${lim_2m} );
+    \node[anchor=east] at (0,10) {\sf{40}};
+    \node[anchor=east] at (0,9) {\sf{30}};
+    \node[anchor=east] at (0,8) {\sf{20}};
+    \node[anchor=east] at (0,7) {\sf{10}};
+    \node[anchor=east] at (0,6) {\sf{0}};
+    \node[anchor=east] at (0,5) {\sf{-10}};
+    \node[anchor=east] at (0,4) {\sf{-20}};
+    \node[anchor=east] at (0,3) {\sf{-30}};
+    \node[anchor=east] at (0,2) {\sf{-40}};
+    \node[anchor=east] at (0,1) {\sf{-50}};
+    \node[anchor=east] at (0,0) {\sf{-60}};
+    \node[anchor=south west] at (0,10)   {\sf{RBW: 100~kHz}};
+    \node[anchor=south east] at (15,10)  {\sf{VBW: 100~kHz}};
+    \node[anchor=north west] at (0,0)    {\sf{Start: 0~MHz}};
+    \node[anchor=north east] at (15,0)   {\sf{Stop: 1000~MHz}};
+\end{tikzpicture}}
+
+    \vspace{7mm}
+
+\small{\begin{tabular}{ccccc}\toprule
+    145 MHz & 290 MHz & 435 MHz & 580 MHz & 725 MHz\\\midrule
+    $abs_2m_0 dBm & $abs_2m_1 dBm & $abs_2m_2 dBm & $abs_2m_3 dBm & $abs_2m_4 dBm\\
+    0.0 dBc & $rel_2m_1 dBc ($pf_2m_1)& $rel_2m_2 dBc ($pf_2m_2)& $rel_2m_3 dBc ($pf_2m_3)& $rel_2m_4 dBc ($pf_2m_4)\\
+    \bottomrule
+\end{tabular}}\end{center}
+
+\begin{center}\scalebox{0.7}{\begin{tikzpicture}
+    \draw plot[smooth,mark size=1pt] file {${counter}_70cm.txt};
+    \draw[xstep=1.5cm,ystep=1cm,lightgray,very thin] (0,0) grid (15,10);
+    \draw[dashed] (0,${peak_70cm} ) -- (15,${peak_70cm} );
+    \draw[dashed] (0,${lim_70cm} ) -- (15,${lim_70cm} );
+    \node[anchor=east] at (0,10) {\sf{40}};
+    \node[anchor=east] at (0,9) {\sf{30}};
+    \node[anchor=east] at (0,8) {\sf{20}};
+    \node[anchor=east] at (0,7) {\sf{10}};
+    \node[anchor=east] at (0,6) {\sf{0}};
+    \node[anchor=east] at (0,5) {\sf{-10}};
+    \node[anchor=east] at (0,4) {\sf{-20}};
+    \node[anchor=east] at (0,3) {\sf{-30}};
+    \node[anchor=east] at (0,2) {\sf{-40}};
+    \node[anchor=east] at (0,1) {\sf{-50}};
+    \node[anchor=east] at (0,0) {\sf{-60}};
+    \node[anchor=south west] at (0,10)   {\sf{RBW: 100~kHz}};
+    \node[anchor=south east] at (15,10)  {\sf{VBW: 100~kHz}};
+    \node[anchor=north west] at (0,0)    {\sf{Start: 0~MHz}};
+    \node[anchor=north east] at (15,0)   {\sf{Stop: 2000~MHz}};
+\end{tikzpicture}}
+
+    \vspace{7mm}
+
+\small{\begin{tabular}{cccc}\toprule
+    431 MHz & 862 MHz & 1293 MHz & 1724 MHz\\\midrule
+    $abs_70cm_0 dBm & $abs_70cm_1 dBm & $abs_70cm_2 dBm & $abs_70cm_3 dBm\\
+    0.0 dBc & $rel_70cm_1 dBc ($pf_70cm_1)& $rel_70cm_2 dBc ($pf_70cm_2)& $rel_70cm_3 dBc ($pf_70cm_3)\\
+    \bottomrule
+\end{tabular}}\end{center}
+\end{multicols}
+Fehler $$\pm2$$ dBm; $$\pm1$$ dB. Grenzwert ab 30~MHz: -13~dBm bis $$\textsf{P}_\textsf{out} \approx 57$$ dBm gem. RR
+
+UHF-Gruppe der USKA, \texttt{http://www.hb9uf.ch}, am Hamfest 2018 in Baar
+\end{document}
